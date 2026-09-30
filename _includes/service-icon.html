@@ -1,0 +1,24 @@
+<span class="service-icon" aria-hidden="true">
+  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+    {% case include.type %}
+    {% when 'desktop' %}
+    <rect x="2.5" y="5" width="19" height="15" rx="2"/>
+    <path d="M3 16h18M12 20v5M7.5 25h9"/>
+    <rect x="25" y="5" width="4.5" height="21" rx="1.5"/>
+    <path d="M26.5 9H28M26.5 12H28"/>
+    <circle cx="27.25" cy="22" r=".6" fill="currentColor" stroke="none"/>
+    {% when 'laptop' %}
+    <rect x="6" y="5.5" width="20" height="16" rx="2"/>
+    <path d="m6 21.5-3.5 4a1 1 0 0 0 .8 1.5h25.4a1 1 0 0 0 .8-1.5l-3.5-4M12.5 24h7M10 9.5h12"/>
+    {% when 'software' %}
+    <rect x="3" y="4.5" width="26" height="23" rx="3"/>
+    <path d="M3 10.5h26M11 15l-4 4 4 4M21 15l4 4-4 4M18 14l-4 10"/>
+    <circle cx="7" cy="7.5" r=".7" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="7.5" r=".7" fill="currentColor" stroke="none"/>
+    {% when 'recovery' %}
+    <path d="M6 14.5 8.5 7h15l2.5 7.5"/>
+    <rect x="5" y="14.5" width="22" height="12" rx="3"/>
+    <path d="M9 22h6M20 18.5a4 4 0 1 1-2 4.5M17.5 18.5H21v3.5"/>
+    {% endcase %}
+  </svg>
+</span>
