@@ -1,16 +1,39 @@
-# Pogromcy awarii — Jekyll
-Migracja https://pogromcyawarii.pl z WordPress do Jekyll. Zawartość i lokalne zdjęcia pochodzą z istniejącej strony.
+# Pogromcy awarii
 
-## Uruchomienie
-Ruby 3.3+, `bundle install`, `bundle exec jekyll serve`. Publikacja: GitHub Settings → Pages → Source → GitHub Actions. Workflow buduje i publikuje po zmianie main.
+A responsive Jekyll website for the computer repair business at [pogromcyawarii.pl](https://pogromcyawarii.pl), migrated from WordPress. Project documentation is written in English; customer-facing content remains in Polish.
 
-## Edycja
-Treść: index.html. Układ: _layouts/default.html. Styl: assets/css/site.css. Zdjęcia: assets/images.
+## Run locally
 
-## Funkcje
-Formularz przygotowuje email w programie pocztowym użytkownika. GitHub Pages nie obsługuje PHP ani WordPress WPForms. Nie ma serwerowej wysyłki ani przechowywania zgłoszeń. Nie wysyłaj formularza podczas testów.
-Opinie korzystają z oryginalnego widgetu Elfsight; mapa z Google Maps. Te usługi pozostają zewnętrznymi zależnościami.
+Use Ruby 3.3 or newer and Bundler:
 
-## Domena pogromcyawarii.pl
-Najpierw sprawdź wersję na https://strzelcu.github.io/pogromcyawarii.pl/.
-Następnie ustaw `url: https://pogromcyawarii.pl` i `baseurl: ""`, dodaj plik CNAME zawierający pogromcyawarii.pl i ustaw tę domenę w Pages. Ustaw DNS zgodnie z aktualną dokumentacją GitHub: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site . Zachowaj rekordy poczty MX/TXT. Włącz HTTPS po wydaniu certyfikatu. Dostęp do DNS jest potrzebny do przełączenia domeny.
+```sh
+bundle install
+bundle exec jekyll serve --baseurl ""
+```
+
+Open http://127.0.0.1:4000. The empty base URL makes local assets resolve from the server root. Production uses `/pogromcyawarii.pl` until the custom domain is configured.
+
+## Project structure
+
+- `index.html`: landing page, service descriptions, gallery, and contact details.
+- `_layouts/default.html`: shared metadata, navigation, footer, and gallery dialog.
+- `assets/css/site.css`: responsive styling and motion preferences.
+- `assets/js/site.js`: navigation, slideshow, scroll reveals, gallery viewer, and email preparation.
+- `assets/images/`: locally stored original website photographs and branding.
+- `_config.yml`: Jekyll configuration and production URL.
+- `.github/workflows/pages.yml`: build and GitHub Pages deployment.
+
+## Features
+
+The site includes responsive navigation, service cards, an accessible gallery dialog, a manual slideshow, and subtle scroll animations. Animations respect `prefers-reduced-motion`. Content and gallery links remain usable without JavaScript.
+
+The contact form prepares a message in the visitor's mail application. The visitor must send it there. The site does not deliver email on a server or store submissions. GitHub Pages cannot execute the original WordPress/PHP form.
+
+Reviews use the existing Elfsight widget. The location map uses Google Maps. These services require network access and may load after the page's own content.
+
+## Documentation
+
+- [Development and validation](docs/DEVELOPMENT.md)
+- [GitHub Pages and custom domain setup](docs/DEPLOYMENT.md)
+
+Original content, photos, branding, and business details were migrated from the existing website. Confirm business details with the owner before changing them.

@@ -4,4 +4,4 @@ url: https://strzelcu.github.io
 baseurl: /pogromcyawarii.pl
 lang: pl
 timezone: Europe/Warsaw
-exclude: [Gemfile, Gemfile.lock, README.md, vendor, work]
+exclude: [Gemfile, Gemfile.lock, README.md, docs, vendor, work]

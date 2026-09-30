@@ -1,1 +1,34 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ page.title | default: site.title | escape }}</title><meta name="description" content="{{ site.description | escape }}"><link rel="canonical" href="{{ page.url | absolute_url }}"><link rel="icon" href="{{ '/assets/images/cropped-site-32x32.jpg' | relative_url }}"><link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}"><script defer src="{{ '/assets/js/site.js' | relative_url }}"></script></head><body><a class="skip" href="#main">Przejdź do treści</a><header><div class="header-inner"><a href="{{ '/' | relative_url }}" aria-label="Pogromcy awarii — strona główna"><img class="logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="Pogromcy awarii"></a><button id="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Menu główne"><a href="{{ '/' | relative_url }}">Home</a><a href="#whoweare">O nas</a><a href="#services">Usługi</a><a href="#opinions">Opinie</a><a href="#gallery">Galeria</a><a href="#contact">Kontakt</a></nav></div></header><main id="main">{{ content }}</main><footer>© 2013–{{ 'now' | date: '%Y' }} Pogromcy awarii. Prepared by <a href="https://strzelecki.opole.pl/">Strzelcu</a>.</footer><script src="https://apps.elfsight.com/p/platform.js" defer></script></body></html>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>{{ page.title | default: site.title | escape }}</title>
+  <meta name="description" content="{{ site.description | escape }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ site.description | escape }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="icon" href="{{ '/assets/images/cropped-site-32x32.jpg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Przejdź do treści</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="Pogromcy awarii — strona główna"><img class="logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="Pogromcy awarii" width="250" height="80"></a>
+      <button id="menu-toggle" aria-expanded="false" aria-controls="navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav id="navigation" aria-label="Menu główne"><a href="{{ '/' | relative_url }}">Start</a><a href="{{ '/' | relative_url }}#whoweare">O nas</a><a href="{{ '/' | relative_url }}#services">Usługi</a><a href="{{ '/' | relative_url }}#opinions">Opinie</a><a href="{{ '/' | relative_url }}#gallery">Galeria</a><a href="{{ '/' | relative_url }}#contact">Kontakt</a></nav>
+      <a class="header-phone" href="tel:+48510265219">510 265 219 <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">{{ content }}</main>
+  <footer><div class="footer-inner"><div><strong>Pogromcy awarii</strong><p>Sprawny komputer. Spokojna głowa.</p></div><div><a href="tel:+48510265219">510 265 219</a><br><a href="mailto:kontakt@pogromcyawarii.pl">kontakt@pogromcyawarii.pl</a></div><p>© 2013–{{ 'now' | date: '%Y' }} Pogromcy awarii.<br>Realizacja: <a href="https://strzelecki.opole.pl/">Strzelcu</a>.</p></div></footer>
+  <dialog id="lightbox" aria-labelledby="lightbox-title"><div class="lightbox-toolbar"><span id="lightbox-title">Zdjęcie z serwisu</span><button id="lightbox-close" type="button" aria-label="Zamknij zdjęcie">✕</button></div><img id="lightbox-image" alt=""><div class="lightbox-controls"><button id="lightbox-prev" type="button" aria-label="Poprzednie zdjęcie">←</button><span id="lightbox-count" aria-live="polite"></span><button id="lightbox-next" type="button" aria-label="Następne zdjęcie">→</button></div></dialog>
+  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+</body>
+</html>
