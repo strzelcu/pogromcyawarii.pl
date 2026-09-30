@@ -1,0 +1,7 @@
+title: Pogromcy awarii
+description: Serwis komputerów i laptopów, oprogramowanie oraz odzyskiwanie danych. Strzelce Opolskie, Zawadzkie i Rożniątów.
+url: https://strzelcu.github.io
+baseurl: /pogromcyawarii.pl
+lang: pl
+timezone: Europe/Warsaw
+exclude: [Gemfile, Gemfile.lock, README.md, vendor, work]
