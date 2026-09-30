@@ -29,7 +29,7 @@ The site includes responsive navigation, service cards, an accessible gallery di
 
 The contact form prepares a message in the visitor's mail application. The visitor must send it there. The site does not deliver email on a server or store submissions. GitHub Pages cannot execute the original WordPress/PHP form.
 
-Reviews use the existing Elfsight widget. The location map uses Google Maps. These services require network access and may load after the page's own content.
+The reviews section displays automatically refreshed Google reviews through Elfsight and links to the business Google profile; see [Google Reviews setup](docs/GOOGLE_REVIEWS.md). The location map uses Google Maps. These services require network access and may load after the page's own content.
 
 ## Documentation
 

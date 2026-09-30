@@ -29,6 +29,8 @@
   <main id="main">{{ content }}</main>
   <footer><div class="footer-inner"><div><strong>Pogromcy awarii</strong><p>Sprawny komputer. Spokojna głowa.</p></div><div><a href="tel:+48510265219">510 265 219</a><br><a href="mailto:kontakt@pogromcyawarii.pl">kontakt@pogromcyawarii.pl</a></div><p>© 2013–{{ 'now' | date: '%Y' }} Pogromcy awarii.<br>Realizacja: <a href="https://strzelecki.opole.pl/">Strzelcu</a>.</p></div></footer>
   <dialog id="lightbox" aria-labelledby="lightbox-title"><div class="lightbox-toolbar"><span id="lightbox-title">Zdjęcie z serwisu</span><button id="lightbox-close" type="button" aria-label="Zamknij zdjęcie">✕</button></div><img id="lightbox-image" alt=""><div class="lightbox-controls"><button id="lightbox-prev" type="button" aria-label="Poprzednie zdjęcie">←</button><span id="lightbox-count" aria-live="polite"></span><button id="lightbox-next" type="button" aria-label="Następne zdjęcie">→</button></div></dialog>
-  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  {% if page.url == '/' and site.data.google_reviews.widget_id != empty %}
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  {% endif %}
 </body>
 </html>
