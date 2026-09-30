@@ -8,3 +8,5 @@ Problem dotyczy: ${f.getAll('category').join(', ')}
 Model: ${f.get('model')}
 
 ${f.get('message')}`; document.querySelector('#form-status').textContent = 'Wyślij przygotowaną wiadomość w swoim programie pocztowym. Jeśli się nie otworzył, napisz na kontakt@pogromcyawarii.pl lub zadzwoń: 510 265 219.'; window.location.href = 'mailto:kontakt@pogromcyawarii.pl?subject=' + encodeURIComponent('Zgłoszenie — Pogromcy awarii') + '&body=' + encodeURIComponent(body); });
+const slides = document.querySelector('#slides');
+['prev','next'].forEach(direction => document.querySelector('#slide-' + direction)?.addEventListener('click', () => { const step = direction === 'next' ? 1 : -1; const index = Math.round(slides.scrollLeft / slides.clientWidth); const count = slides.children.length; slides.scrollTo({left: ((index + step + count) % count) * slides.clientWidth, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); }));
