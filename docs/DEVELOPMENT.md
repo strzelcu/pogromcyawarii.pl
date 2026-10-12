@@ -1,45 +1,30 @@
 # Development and validation
 
-## Build
+Node.js 24 LTS, npm, Next.js App Router, TypeScript, React, and Zod. Customer-facing text is Polish; project documentation is English.
 
-```sh
-bundle install
-bundle exec jekyll build --trace
-```
+## Commands
 
-Generated files are written to `_site/`. Do not commit generated output, dependency directories, or local runtime files.
+- `npm ci`: install the locked dependency graph.
+- `npm run dev`: run Next.js locally.
+- `npm run typecheck`: check TypeScript.
+- `npm test`: check workflow, ownership, validation, local registration, and Node.js APIs.
+- `npm run build`: build the production application.
+- `npm run start`: serve the production build.
+- `npm run test:e2e`: run Playwright against the production server (built first).
+- `npm run format:check`: check formatting.
 
-## Preview
+Playwright needs Chromium: `npx playwright install --with-deps chromium`. The configuration automatically starts a local server if none is running.
 
-```sh
-bundle exec jekyll serve --baseurl ""
-```
+## Mock data
 
-Visit http://127.0.0.1:4000. Refresh after changes if necessary. The production URL and base path remain configured in `_config.yml`.
+The demo context reads validated, versioned browser storage after hydration. It reports blocked/corrupt storage and falls back to seeded data. Reset uses an explicit confirmation because it deletes local accounts and repairs. All forms validate inputs before creating records; the server validates submissions independently.
 
-## Editing
+Domain functions enforce the workflow: equipment receipt precedes diagnostics, quote acceptance precedes repair, rejection leads to return without repair, and completion follows return shipping. Client screens expose only that client's repairs, while service screens require the staff demo role. These are demo workflow checks, not production authorization.
 
-Update customer-facing Polish copy in `index.html`. Keep one primary `h1` heading and use `h2` for page sections. Preserve existing anchor IDs because navigation and incoming links use them.
+## Browser coverage
 
-Gallery thumbnails link to their larger local images. With JavaScript enabled, these links open a native modal dialog. Without JavaScript, they open the image directly. Ctrl/Cmd-click retains normal browser behavior.
+Playwright verifies: new repair → Node.js submission API → local record → inbound shipping API → staff receipt/diagnostics/quote → client acceptance → return shipping → completion. Additional cases cover registration, profile persistence, owner separation, service-only user list, mobile menu, gallery dialog, invalid API input, quote rejection and return without repair, recovery/reset after corrupt storage, and absence of mobile horizontal overflow.
 
-The slideshow is manual; it does not automatically advance. Visitors can use its buttons, horizontal swiping, or arrow keys while the slideshow has focus. The gallery dialog supports previous/next buttons, arrow keys, Escape, and focus return to the originating thumbnail.
+## Visual reference
 
-Scroll reveals use IntersectionObserver. If it is unavailable, content stays visible. When the operating system requests reduced motion, animations and smooth scrolling are disabled.
-
-## Validation checklist
-
-- Build with Jekyll without errors.
-- Check desktop and narrow mobile widths for horizontal overflow.
-- Verify navigation opens, closes, and reaches the correct section.
-- Check slideshow buttons, count, swipe behavior, and arrow keys.
-- Open gallery images; verify next/previous, Escape, and focus return.
-- Confirm photos load and the original service scope and contact details remain accurate.
-- Check focus visibility and keyboard access.
-- Check the reduced-motion setting.
-- Verify the contact form's required fields without sending a real enquiry.
-- Allow time for the external reviews and map to load.
-
-## Dependencies and privacy
-
-There are no frontend package dependencies. Jekyll and WEBrick are declared in the Gemfile. Elfsight and Google Maps are external embeds; their availability and privacy behavior are controlled by their providers. The email form does not send data to a separate form processing service.
+`app/site.css` is the existing site's styling; `app/app.css` adds the account/repair screens using its existing colors, typography, cards, and buttons. Original Jekyll source remains for comparison; application code is under `app/`, `components/`, and `lib/`.
