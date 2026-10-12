@@ -1,32 +1,18 @@
-# Deployment
+# Vercel deployment
 
-## GitHub Pages
+This branch is a Next.js app with Node.js 24 API handlers. It does not use Jekyll or static export for deployment.
 
-The repository is `strzelcu/pogromcyawarii.pl`. Enable hosting under **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+1. Import `strzelcu/pogromcyawarii.pl` into Vercel or use an existing linked project.
+2. Select the `feature/repair-service-app` branch for a **preview deployment**. Keep production pointed at the existing branch/site until the migration is reviewed.
+3. Framework preset: **Next.js**. Root directory: repository root. Node.js version: **24.x**.
+4. Install: `npm ci`. Build: `npm run build`. Leave output directory at the framework default. The repository includes `vercel.json`.
+5. No database credentials or environment variables are needed for demo mode.
+6. Verify the preview using both demo roles in the same browser. Test one newly created repair through both courier directions, quote acceptance and rejection, refresh persistence, and mobile navigation.
 
-The workflow runs on pushes to `main` and supports manual dispatch. It builds with Ruby 3.3 and Jekyll, uploads the generated site, and deploys it through GitHub Pages. The build can pass while deployment fails if Pages has not been enabled.
+Do not configure `output: 'export'`: the app needs Node.js route handlers. Server-side writes never depend on process memory or local disk. The browser owns demo data; changing from a preview URL to a custom domain starts a separate local dataset.
 
-The initial project URL is https://strzelcu.github.io/pogromcyawarii.pl/. Its configuration is:
+The application's Pages workflow is disabled. Merging this branch does not automatically migrate a custom domain or configure Vercel. Change production/domain routing only after reviewing the preview and checking the intended production setup.
 
-```yaml
-url: https://strzelcu.github.io
-baseurl: /pogromcyawarii.pl
-```
+## Production follow-up
 
-## Custom domain
-
-After validating the GitHub Pages version:
-
-1. Set `url: https://pogromcyawarii.pl` and `baseurl: ""` in `_config.yml`.
-2. Add a root-level `CNAME` file containing `pogromcyawarii.pl`.
-3. Configure that custom domain in the repository's Pages settings.
-4. Update the domain's DNS using the current [GitHub custom domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
-5. Preserve existing email-related MX and TXT records.
-6. Enable HTTPS once GitHub has issued the certificate.
-7. Check the homepage, navigation, images, canonical URL, and social metadata at the custom domain.
-
-Domain migration requires access to the DNS provider. Committing a CNAME file alone does not redirect traffic from the existing host.
-
-## Rollback
-
-Revert the relevant source commit and let the workflow rebuild. For a DNS migration, retain the previous hosting details until the new domain has been verified.
+Before accepting real users, configure real authentication and a shared persistent database, implement server-side access checks, replace public demo endpoints, connect a courier and email provider, and establish privacy/consent handling. Keep provider credentials on the server. Plan data storage close to the Functions region.

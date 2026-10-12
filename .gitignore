@@ -4,3 +4,12 @@ _site/
 .bundle/
 vendor/
 .DS_Store
+
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/
